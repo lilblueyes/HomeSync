@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>HomeSync</title>
+    <link rel="icon" href="media/logo.png" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+
+  <body>
+    <div class="video-bg">
+      <video width="320" height="240" autoplay loop muted></video>
+    </div>
+
+    <div id="overlay" style="display: none;"></div>
+
+    <div id="errorDialog" style="display: none;">
+      <div id="errorDialogContent">
+        <p>Code PIN Incorrect !</p>
+        <button id="OKButton">OK</button>
+      </div>
+    </div>
+    
+
+    <div class="app">
+      <div class="header">
+        <div class="corner"></div>
+        <div class="header-menu">
+          <a class="menu-link is-active" href="#">Accueil</a>
+          <a class="menu-link" href="#">Réglages</a>
+        </div>
+      </div>
+
+      <div class="homesync-logo">
+        <img src="media/logo.png" />
+        HomeSync
+      </div>
+
+      <div class="wrapper">
+        <div class="left-side">
+          <div class="side-wrapper">
+            <div class="side-menu">
+              <a href="#">
+                <div id="date-time-container">
+                  <span id="date"></span><br />
+                  <span id="time"></span><br />
+                </div> </a
+              ><br />
+
+              <div class="meteo" id="meteo-container">
+                <script
+                  src="https://static.elfsight.com/platform/platform.js"
+                  data-use-service-core
+                  defer
+                ></script>
+                <div
+                  class="elfsight-app-df70fc02-2183-46fd-9c3a-0d435c83947e"
+                ></div>
+                <br />
+              </div>
+
+              <div class="rfid-container" id="rfid-container">
+                Historique RFID
+
+                <div id="userHistory"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="main-container">
+          <div class="content-wrapper" id="content-wrapper">
+            <div id="home-content">
+              <div class="content-section">
+                <div class="visu-cmd-section-title">Visualisation</div>
+                <div class="content-section">
+                  <div class="apps-card">
+                    <div class="states">
+                      <div class="tor-state">
+                        <div class="visu">
+                          <img
+                            src="media/porte-dark.png"
+                            id="porte-icon"
+                            class="icon-state"
+                            width="40"
+                            height="auto"
+                          />
+
+                          Porte
+                        </div>
+
+                        <div class="state-viewer">
+                          <div class="unlockStatusButton">
+                            <i class="material-icons unlockIcon">lock_open</i>
+                          </div>
+                          <div class="lockStatusButton">
+                            <i class="material-icons lockIcon">lock_outline</i>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="tor-state">
+                        <div class="visu">
+                          <img
+                            src="media/alarme-dark.png"
+                            id="alarme-icon"
+                            class="icon-state"
+                            width="40"
+                            height="auto"
+                          />
+
+                          Alarme
+                        </div>
+
+                        <div id="alarme"></div>
+                        <img src="" class="alarme-image" id="alarme-image" />
+                      </div>
+
+                      <div class="tor-state">
+                        <div class="visu">
+                          <img
+                            src="media/volet-dark.png"
+                            id="volet-icon"
+                            class="icon-state"
+                            width="40"
+                            height="auto"
+                          />
+
+                          Volet
+                        </div>
+
+                        <div class="door">
+                          <div class="slats">
+                            <div class="slat"></div>
+                            <div class="slat"></div>
+                            <div class="slat"></div>
+                            <div class="slat"></div>
+                            <div class="slat"></div>
+                            <div class="slat"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="measures">
+                      <span>
+                        <img
+                          src="media/capteur-dark.png"
+                          id="capteur-icon"
+                          class="icon-state-sensor"
+                          width="40"
+                          height="auto"
+                        />
+
+                        Mesures ambiantes
+                      </span>
+                      <div
+                        class="content-section"
+                        style="width: 50%; margin-right: 40px"
+                      >
+                        <div class="measures-state-sensors">
+                          <ul>
+                            <li class="section-visu">
+                              <div class="visu">
+                                Température :
+                                <div class="measures-state-data temperature">
+                                  -- °C
+                                </div>
+                              </div>
+                            </li>
+                            <li class="section-visu">
+                              <div class="visu">
+                                Pression :
+                                <div class="measures-state-data pression">
+                                  -- hPa
+                                </div>
+                              </div>
+                            </li>
+                            <li class="section-visu">
+                              <div class="visu">
+                                BH1750 :
+                                <div class="measures-state-data bh1750">
+                                  -- lux
+                                </div>
+                              </div>
+                            </li>
+                            <li class="section-visu">
+                              <div class="visu">
+                                Photorésistance :
+                                <div class="measures-state-data ldr">
+                                  -- lux
+                                </div>
+                              </div>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="gaz-states">
+                      <span>
+                        <img
+                          src="media/gaz-dark.png"
+                          id="gaz-icon"
+                          class="icon-state-gaz"
+                          width="50"
+                          height="auto"
+                        />
+                        Gaz </span
+                      ><br />
+                      <div class="gaz-analog-state">CO : -- ppm</div>
+
+                      <div class="gaz-digital-state">
+                        <svg
+                          class="success-symbol"
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 32 32"
+                        >
+                          <use xlink:href="#success" />
+                        </svg>
+
+                        <svg
+                          class="error-symbol"
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 32 32"
+                        >
+                          <use xlink:href="#error" />
+                        </svg>
+
+                        <svg display="none">
+                          <symbol id="error" viewBox="0 0 32 32">
+                            <circle
+                              r="15"
+                              cx="16"
+                              cy="16"
+                              fill="none"
+                              stroke="hsl(13,90%,55%)"
+                              stroke-width="2"
+                            />
+                            <line
+                              x1="10"
+                              y1="10"
+                              x2="22"
+                              y2="22"
+                              stroke="hsl(13,90%,55%)"
+                              stroke-width="2"
+                              stroke-linecap="round"
+                            />
+                            <line
+                              x1="22"
+                              y1="10"
+                              x2="10"
+                              y2="22"
+                              stroke="hsl(13,90%,55%)"
+                              stroke-width="2"
+                              stroke-linecap="round"
+                            />
+                          </symbol>
+
+                          <symbol id="success" viewBox="0 0 32 32">
+                            <circle
+                              r="15"
+                              cx="16"
+                              cy="16"
+                              fill="none"
+                              stroke="hsl(93,90%,40%)"
+                              stroke-width="2"
+                            />
+                            <polyline
+                              points="9,18 13,22 23,12"
+                              fill="none"
+                              stroke="hsl(93,90%,40%)"
+                              stroke-width="2"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                            />
+                          </symbol>
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="espace"></div>
+
+                <div class="visu-cmd-section-title">Commandes</div>
+
+                <div class="commande-section" style="display: flex">
+                  <div
+                    class="content-section"
+                    style="width: 50%; margin-right: 40px"
+                  >
+                    <ul>
+                      <!-- Section pour les commandes de "Porte" -->
+                      <li class="section-cmd">
+                        <div class="cmd">
+                          <img
+                            src="media/porte-dark.png"
+                            id="porte-icon"
+                            class="icon"
+                            width="40"
+                            height="auto"
+                          />
+
+                          Porte
+                          <div id="button-background">
+                            <span class="slide-text">Glisser pour ouvrir</span>
+                            <div id="slider">
+                              <i id="locker" class="material-icons"
+                                >lock_open</i
+                              >
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+
+                      <!-- Section pour les commandes de "Volet" -->
+                      <li class="section-cmd shutter-section">
+                        <div class="cmd">
+                          <img
+                            src="media/volet-dark.png"
+                            id="volet-icon"
+                            class="icon"
+                            width="40"
+                            height="auto"
+                          />
+
+                          Volet  
+                        </div>
+
+                        <div class="button-container">
+                          <div class="button-wrapper shutters-open">
+                            <button
+                              class="content-button status-button open"
+                              onclick="sendRequest('33/open')"
+                            >
+                              Ouvrir
+                            </button>
+                          </div>
+
+                          <div class="button-wrapper shutters-open">
+                            <button
+                              class="content-button status-button close"
+                              onclick="sendRequest('33/close')"
+                            >
+                              Fermer
+                            </button>
+                          </div>
+                        </div>
+                      </li>
+
+                      <!-- Section pour les commandes de "Portail" -->
+                      <li class="section-cmd gate-section">
+                        <div class="cmd">
+                          <img
+                            src="media/portail-dark.png"
+                            id="portail-icon"
+                            class="icon"
+                            width="40"
+                            height="auto"
+                          />
+                          Portail
+                        </div>
+
+                        <div class="button-container">
+                          <div class="button-wrapper shutters-open">
+                            <button
+                              class="content-button status-button open"
+                              onclick="sendRequest('25/open')"
+                            >
+                              Ouvrir
+                            </button>
+                          </div>
+
+                          <div class="button-wrapper shutters-open">
+                            <button
+                              class="content-button status-button close"
+                              onclick="sendRequest('25/close')"
+                            >
+                              Fermer
+                            </button>
+                          </div>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div class="content-section" style="width: 50%">
+                    <ul>
+                      <li class="commande-pwm" style="margin-left: auto">
+                        <div class="systeme">
+                          <div class="card">
+                            <p>Éclairage</p>
+                            <p class="switch">
+                              <input
+                                type="range"
+                                onchange="updateSliderPWM(this)"
+                                id="slider1"
+                                min="0"
+                                max="100"
+                                step="1"
+                                value="0"
+                                class="slider"
+                              />
+                                    Luminosité :  
+                              <span id="sliderValue1"></span>
+                              &percnt;
+                            </p>
+                          </div>
+                        </div>
+                      </li>
+
+                      <li class="commande-pwm" style="margin-left: auto">
+                        <div class="systeme">
+                          <div class="card">
+                            <p>VMC</p>
+                            <p class="switch">
+                              <input
+                                type="range"
+                                onchange="updateSliderPWM(this)"
+                                id="slider2"
+                                min="0"
+                                max="100"
+                                step="1"
+                                value="0"
+                                class="slider"
+                              />
+                                    Vitesse :   <span id="sliderValue2"></span>
+                              &percnt;
+                            </p>
+                          </div>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div id="settings-content" style="display: none">
+              <div class="content-section">
+                <div class="param-section-title">
+                  <span style="float: left">Paramètres</span>
+                  <span style="float: right"
+                    >Musique                                              </span
+                  >
+                  <div style="clear: both"></div>
+                </div>
+
+                <div class="content-section">
+                  <div class="apps-card">
+                    <div class="app-bg">
+                      <span>
+                        <img
+                          src="media/bg-dark.png"
+                          id="bg-icon"
+                          class="icon-bg"
+                          width="35"
+                          height="auto"
+                        />
+                        Fond d'écran
+                      </span>
+
+                      <div class="content-section">
+                        <div id="controls">
+                          <label for="intervalSelect"
+                            >Intervalle de changement :</label
+                          >
+                          <select id="intervalSelect">
+                            <option value="300000">5 minutes</option>
+                            <option value="900000">15 minutes</option>
+                            <option value="1800000">30 minutes</option>
+                            <option value="3600000">1 heure</option>
+                            <option value="21600000">6 heures</option>
+                            <option value="86400000">24 heures</option>
+                            <option value="-1">Jamais</option>
+                          </select>
+                        </div>
+
+                        <div class="espace"></div>
+
+                        <button class="swipe">Suivant</button>
+                      </div>
+                    </div>
+
+                    <div class="app-theme">
+                      <span>
+                        <img
+                          src="media/theme-dark.png"
+                          id="theme-icon"
+                          class="icon-theme"
+                          width="40px"
+                          height="auto"
+                        />
+                        Thème
+                      </span>
+                      <div class="dark-light">
+                        <input class="toggle-dark-light" type="checkbox" />
+                      </div>
+                    </div>
+
+                    <div class="spotify">
+                      <iframe
+                        src="https://open.spotify.com/embed/playlist/37i9dQZF1DWYRdd9noPgqB?utm_source=generator"
+                        width="100%"
+                        height="100vh"
+                        frameborder="0"
+                        allowfullscreen=""
+                        loading="lazy"
+                      ></iframe>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="espace"></div>
+
+                <div class="admin-section-title">Administrateur</div>
+
+                <div class="content-section">
+                  <div class="admin-section" style="display: flex">
+                    <div class="content-section"></div>
+                    <div class="admin-off">
+                      <div class="pin-section">
+                        <input
+                          type="password"
+                          class="pin-input"
+                          id="first"
+                          maxlength="1"
+                          oninput="showCharacter(this)"
+                          onkeyup="clickEvent(this,'second')"
+                          inputmode="numeric"
+                          pattern="[0-9]*"
+                        />
+                        <input
+                          type="password"
+                          class="pin-input"
+                          id="second"
+                          maxlength="1"
+                          oninput="showCharacter(this)"
+                          onkeyup="clickEvent(this,'third')"
+                          inputmode="numeric"
+                          pattern="[0-9]*"
+                        />
+                        <input
+                          type="password"
+                          class="pin-input"
+                          id="third"
+                          maxlength="1"
+                          oninput="showCharacter(this)"
+                          onkeyup="clickEvent(this,'fourth')"
+                          inputmode="numeric"
+                          pattern="[0-9]*"
+                        />
+                        <input
+                          type="password"
+                          class="pin-input"
+                          id="fourth"
+                          maxlength="1"
+                          oninput="showCharacter(this)"
+                          onkeyup="onLastInputKeyUp()"
+                          inputmode="numeric"
+                          pattern="[0-9]*"
+                        />
+                      </div>
+
+                      <button
+                        id="confirmButton"
+                        class="adminButton"
+                        onclick="checkPIN()"
+                      >
+                        Confirmer
+                      </button>
+                    </div>
+
+                    <div class="admin-on" style="display: none">
+                      <div class="displayRFID">
+                        <h2>Gestion des utilisateurs :<br /></h2>
+
+                        <div id="userList"></div>
+                      </div>
+
+                      <div class="manageRFID">
+                        <button id="deleteButton" class="adminONButton">
+                          Supprimer utilisateur/s
+                        </button>
+                        <button id="updateButton" class="adminONButton">
+                          Modifier Nom d'utilisateur
+                        </button>
+                        <button id="exitAdminModeButton" class="adminONButton">
+                          Quitter mode Administrateur
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="./script.js"></script>
+  </body>
+</html>
