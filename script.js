@@ -149,7 +149,6 @@ const darkLightContainer = document.querySelector(".dark-light");
 
 toggleButton.addEventListener("click", () => {
   document.body.classList.toggle("light-mode");
-  hoverSound3.play();
 });
 
 darkLightContainer.addEventListener("click", () => {
@@ -799,74 +798,3 @@ function showCharacter(input) {
     input.type = "password";
   }, 200);
 }
-
-document.addEventListener("DOMContentLoaded", function () {
-  var hoverSound = new Audio("media/hover.mp3");
-  var hoverSound2 = new Audio("media/hover2.mp3");
-  var hoverSound3 = new Audio("media/click.mp3");
-  hoverSound2.volume = 0.1;
-
-  var hoverSelectors = [
-    ".tor-state",
-    ".gaz-states",
-    ".measures",
-    ".pin-input",
-    "#date-time-container",
-    "#meteo-container",
-    ".app-bg",
-    ".app-theme",
-    ".spotify",
-  ];
-
-  var hoverSelectors2 = [".commande-pwm", ".section-cmd", ".section-visu"];
-
-  hoverSelectors.forEach(function (selector) {
-    document.querySelectorAll(selector).forEach(function (element) {
-      element.addEventListener("mouseover", function (event) {
-        if (event.target === this) {
-          hoverSound.play();
-        }
-      });
-    });
-  });
-
-  hoverSelectors2.forEach(function (selector) {
-    document.querySelectorAll(selector).forEach(function (element) {
-      element.addEventListener("mouseover", function (event) {
-        if (event.target === this) {
-          hoverSound2.play();
-        }
-      });
-    });
-  });
-
-  document.querySelectorAll("button").forEach(function (button) {
-    button.addEventListener("click", function (event) {
-      if (!event.target.disabled) {
-        hoverSound3.play();
-      }
-    });
-  });
-
-  document
-    .querySelectorAll("button, .menu-link, .toggle-dark-light")
-    .forEach(function (element) {
-      if (
-        element.classList.contains("menu-link") &&
-        (element.textContent === "Accueil" ||
-          element.textContent === "Réglages")
-      ) {
-        element.addEventListener("click", function (event) {
-          if (!event.target.disabled) {
-            hoverSound3.play();
-          }
-        });
-      } else if (!element.classList.contains("menu-link")) {
-        element.addEventListener("click", function (event) {
-          if (!event.target.disabled) {
-            hoverSound3.play();
-          }
-        });
-      }
-    });
-});
