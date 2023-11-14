@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <!-- Métadonnées et liens externes -->
+    <meta charset="UTF-8" />
+    <title>HomeSync</title>
+    <link rel="icon" href="media/logo.png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+    <!-- Fond d'écran vidéo -->
+    <div class="video-bg"></video>
+    </div>
+
+    <!-- Overlay et fenêtre d'erreur -->
+    <div id="overlay" style="display: none"></div>
+    <div id="errorDialog" style="display: none">
+        <div id="errorDialogContent">
+            <p>Code PIN Incorrect !</p>
+            <button id="OKButton">OK</button>
+        </div>
+    </div>
+
+    <!-- Interface principale -->
+    <div class="app">
+        <!-- En-tête -->
+        <header class="header">
+            <div class="corner"></div>
+            <nav class="header-menu">
+                <a class="menu-link is-active" href="#">Accueil</a>
+                <a class="menu-link" href="#">Réglages</a>
+            </nav>
+        </header>
+
+        <!-- Logo -->
+        <div class="homesync-logo"></div>
+
+        <!-- Contenu principal -->
+        <div class="wrapper">
+            <!-- Menu latéral gauche -->
+            <aside class="left-side">
+                <!-- Widgets et liens -->
+                <div class="side-wrapper">
+                    <div class="side-menu">
+                        <!-- Date et heure -->
+                        <a href="#">
+                            <div id="date-time-container">
+                                <span id="date"></span><br />
+                                <span id="time"></span>
+                            </div>
+                        </a>
+                        <!-- Météo -->
+                        <div class="meteo" id="meteo-container">
+                            <script src="https://static.elfsight.com/platform/platform.js" data-use-service-core defer></script>
+                            <div class="elfsight-app-df70fc02-2183-46fd-9c3a-0d435c83947e"></div>
+                        </div>
+                        <!-- RFID -->
+                        <div class="rfid-container" id="rfid-container">
+                            Historique RFID
+                            <div id="userHistory"></div>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Conteneur central pour les contenus interactifs -->
+            <main class="main-container">
+                <div class="content-wrapper" id="content-wrapper">
+                    <!-- Section de la page d'accueil -->
+                    <section id="home-content">
+                        <!-- ... (Contenu de la page d'accueil) -->
+                    </section>
+
+                    <!-- Section de paramètres -->
+                    <section id="settings-content" style="display: none">
+                        <!-- ... (Contenu de la section de paramètres) -->
+                    </section>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Scripts JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="./script.js"></script>
+</body>
+</html>

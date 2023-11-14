@@ -1,0 +1,74 @@
+/* Importation de la police et définition des variables de base */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+
+:root {
+  /* Définition des variables CSS */
+}
+
+
+/* Styles globaux et réinitialisations */
+* {
+  /* Styles globaux */
+}
+
+
+/* Styles de base pour les éléments HTML */
+html {
+  /* Styles pour l'élément html */
+}
+body {
+  /* Styles pour le corps de la page */
+}
+img {
+  /* Styles pour les images */
+}
+
+
+/* Styles spécifiques pour les modes clair et sombre */
+.light-mode {
+  /* Styles spécifiques au mode clair */
+}
+/* Utilisation des variables CSS pour simplifier les modifications de thème */
+.toggle-dark-light { /* Styles pour le basculeur de thème */ }
+
+
+/* Styles pour l'application principale et ses composants */
+.app {
+  /* Styles pour l'application principale */
+}
+.header, .main-header {
+  /* Styles pour les en-têtes */
+}
+.wrapper {
+  /* Styles pour l'élément wrapper */
+}
+.left-side, .side-wrapper, .side-menu a, .main-container, .content-wrapper {
+  /* Styles pour les conteneurs et menus latéraux */
+}
+
+
+/* Styles pour les sections de contenu */
+.content-section, .visu-cmd-section-title, .param-section-title, .admin-section-title, .content-section ul, .content-section ul li {
+  /* Styles pour les sections de contenu et leurs éléments */
+}
+
+
+/* Styles pour les éléments interactifs */
+.slider, .content-button, .button-wrapper, .button-container, .pop-up, .pin-input, .adminButton, .adminONButton {
+  /* Styles pour les curseurs, boutons, pop-ups et champs de saisie */
+}
+
+
+/* Styles pour les médias et composants spécifiques */
+.video-bg, .video-bg video, .img-content, .content-text, .content-button-wrapper, .apps-card, .app-card, .app-cardbis, .states, .tor-state, .lockStatusButton, .unlockStatusButton, .material-icons, .state-viewer, .alarme-on, .alarme-off, .door, .slat, .slats, .gaz-states, .gaz-analog-state, .gaz-digital-state, .measures, .measures-state-sensors, .measures-state-data, .dark-light, .success-symbol, .error-symbol, .spotify, .app-theme, .app-bg {
+  /* Styles pour les composants spécifiques comme les cartes, les états, les icônes, etc. */
+}
+
+
+/* Styles pour les médias queries et la responsivité */
+@media screen and (max-width: 480px), (max-width: 510px), (max-width: 565px), (max-width: 700px), (max-width: 880px), (max-width: 945px), (max-width: 1055px), (max-width: 1110px) {
+  /* Regroupement des règles médias */
+}
+
+
+
