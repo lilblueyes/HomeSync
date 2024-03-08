@@ -502,7 +502,6 @@ img {
   margin-top: 0;
 }
 
-/* Volets / portail fermé */
 .shutters-closed .status-button.open {
   color: #fff;
   background-color: #3a6df0;
@@ -545,7 +544,6 @@ img {
   background: #1e59f1;
 }
 
-/* Styles pour les boutons désactivés */
 .status-button[disabled] {
   cursor: not-allowed;
   color: var(--button-inactive);
@@ -554,9 +552,9 @@ img {
 .button-wrapper {
   display: flex;
   justify-content: flex-end;
-  min-width: 120px; /* ou autre valeur de votre choix */
+  min-width: 120px; 
   margin: auto;
-  margin-left: 5px; /* Pour un peu d'espacement entre les boutons */
+  margin-left: 5px; 
 }
 
 @media screen and (max-width: 880px) {
@@ -640,6 +638,7 @@ img {
   flex-wrap: wrap;
   width: calc(100% + 20px);
   cursor: default;
+  margin-top: -10px;
 }
 
 .app-card {
@@ -779,10 +778,16 @@ img {
 
 .section-cmd {
   cursor: default;
+  
 }
 
 .commande-pwm {
   cursor: default;
+}
+
+.commande-section {
+  margin-top: -10px;
+
 }
 
 .app-cardbis {
@@ -914,12 +919,6 @@ img {
   right: -1px;
   transform: translateY(-50%);
   transition: 0.3s ease;
-
-  i {
-    color: rgb(44, 48, 52);
-    font-size: 80px;
-    text-align: center;
-  }
 }
 
 .lockStatusButton {
@@ -950,6 +949,21 @@ img {
   transform: translate(-50%, -50%);
   margin-bottom: 30px;
   padding: 33px;
+  
+}
+
+.unlockStatusButton,
+.lockStatusButton {
+  padding: 5px; 
+}
+
+.unlockStatusButton i,
+.lockStatusButton i {
+  font-size: 1.8rem;
+  color: var(--theme-bg);
+
+  display: inline-block;
+  direction: ltr;
 }
 
 .state-viewer svg {
@@ -1166,7 +1180,7 @@ img {
   line-height: 1.6em;
   margin-top: 0px;
   padding-bottom: 30px;
-  text-align: center; /* Centrer horizontalement */
+  text-align: center; 
 }
 
 .gaz-analog-state span {
@@ -1256,11 +1270,11 @@ img {
 }
 
 .success-symbol {
-  display: inline; /* modifié pour être visible par défaut */
+  display: inline; 
 }
 
 .error-symbol {
-  display: none; /* caché par défaut */
+  display: none; 
 }
 
 .measures {
@@ -1388,7 +1402,6 @@ img {
   padding-right: 20px;
 }
 
-/******************************************************************************************************/
 #button-background {
   align-items: center;
   background: none;
@@ -1532,21 +1545,22 @@ img {
   font-size: 16px;
   border-radius: 14px;
   cursor: default;
-  justify-content: center; /* Centre les enfants horizontalement */
+  justify-content: center; 
   align-items: center;
   height: 235px;
   margin: 0 2px;
   border: 3px solid var(--content-bg);
   background-color: var(--theme-bg-color);
+  margin-top: -10px;
 }
 
 .admin-off {
   display: flex;
-  flex-direction: column; /* empile les enfants en colonne */
+  flex-direction: column; 
 
   font-size: 16px;
   cursor: default;
-  justify-content: center; /* Centre les enfants horizontalement */
+  justify-content: center; 
   align-items: center;
 
   height: 105px;
@@ -1592,7 +1606,7 @@ img {
   display: flex;
   font-size: 16px;
   cursor: default;
-  justify-content: center; /* Centre les enfants horizontalement */
+  justify-content: center; 
   align-items: center;
 }
 
@@ -1646,7 +1660,7 @@ img {
 }
 .displayRFID,
 .manageRFID {
-  margin: 10px; /* Ajoute un peu d'espace entre les blocs */
+  margin: 10px; 
   width: 45%;
 }
 
@@ -1666,12 +1680,12 @@ img {
   margin-top: 20px;
 }
 
-/* CSS pour l'état normal */
+
 body {
   zoom: 0.9;
   margin-top: 45px;
 }
-/* CSS pour le mode plein écran */
+
 @media screen and (min-height: 1000px) {
   body {
     zoom: 1;
@@ -1682,9 +1696,9 @@ body {
 .section-cmd .icon {
   top: 18px;
   left: -5px;
-  height: auto; /* Maintient le ratio hauteur/largeur de l'image */
+  height: auto; 
   float: left;
-  margin-right: 10px; /* Ajoutez une marge entre l'icône et le texte si nécessaire */
+  margin-right: 10px;
   transition: 0.3s ease;
   position: relative;
 }
@@ -1692,9 +1706,9 @@ body {
 .icon-state {
   top: 8px;
   left: -5px;
-  height: auto; /* Maintient le ratio hauteur/largeur de l'image */
+  height: auto; 
   float: left;
-  margin-right: 10px; /* Ajoutez une marge entre l'icône et le texte si nécessaire */
+  margin-right: 10px; 
   transition: 0.3s ease;
   position: relative;
 }
@@ -1702,9 +1716,9 @@ body {
 .icon-state-gaz {
   top: 30px;
   left: 4px;
-  height: auto; /* Maintient le ratio hauteur/largeur de l'image */
+  height: auto; 
   float: left;
-  margin-right: 10px; /* Ajoutez une marge entre l'icône et le texte si nécessaire */
+  margin-right: 10px; 
   transition: 0.3s ease;
   position: relative;
   margin-top: -13px;
@@ -1713,9 +1727,9 @@ body {
 .icon-state-sensor {
   top: 26px;
   left: 4px;
-  height: auto; /* Maintient le ratio hauteur/largeur de l'image */
+  height: auto; 
   float: left;
-  margin-right: 10px; /* Ajoutez une marge entre l'icône et le texte si nécessaire */
+  margin-right: 10px; 
   transition: 0.3s ease;
   position: relative;
   margin-top: -13px;
@@ -1725,9 +1739,9 @@ body {
   top: 22px;
   left: 4px;
   padding-right: 5px;
-  height: auto; /* Maintient le ratio hauteur/largeur de l'image */
+  height: auto; 
   float: left;
-  margin-right: 15px; /* Ajoutez une marge entre l'icône et le texte si nécessaire */
+  margin-right: 15px; 
   transition: 0.3s ease;
   position: relative;
   margin-top: -13px;
@@ -1737,9 +1751,9 @@ body {
   top: 23px;
   left: 4px;
   padding-right: 5px;
-  height: auto; /* Maintient le ratio hauteur/largeur de l'image */
+  height: auto; 
   float: left;
-  margin-right: 15px; /* Ajoutez une marge entre l'icône et le texte si nécessaire */
+  margin-right: 15px; 
   transition: 0.3s ease;
   position: relative;
   margin-top: -13px;
@@ -1749,9 +1763,9 @@ body {
   top: 22px;
   left: 4px;
   padding-right: 5px;
-  height: auto; /* Maintient le ratio hauteur/largeur de l'image */
+  height: auto; 
   float: left;
-  margin-right: 15px; /* Ajoutez une marge entre l'icône et le texte si nécessaire */
+  margin-right: 15px; 
   transition: 0.3s ease;
   position: relative;
   margin-top: -13px;
@@ -1952,7 +1966,7 @@ body {
   transition: 0.3s ease;
   flex-direction: column;
   height: 332px;
-  overflow: hidden; /* Ajoute cette ligne */
+  overflow: hidden; 
 }
 
 .spotify iframe {
@@ -2061,44 +2075,44 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5); /* Noir avec transparence */
-  z-index: 1000; /* Assurez-vous que cet index est supérieur à celui de tous les autres éléments, sauf la boîte de dialogue */
+  background-color: rgba(0, 0, 0, 0.5); 
+  z-index: 1000; 
 }
 
-/* Boîte de dialogue principale */
+
 #errorDialog {
-  display: none; /* Caché par défaut */
+  display: none; 
   position: fixed;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  min-width: 300px; /* Ajustez selon la largeur souhaitée */
-  background-color: var(--dropdown-bg); /* Couleur de fond du thème */
-  color: white; /* Couleur du texte */
+  min-width: 300px; 
+  background-color: var(--dropdown-bg); 
+  color: white;
   padding: 20px;
   border: 1px solid var(--button-inactive);
   font-size: 18px;
   border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Ombre portée pour un effet de profondeur */
-  z-index: 1001; /* Doit être supérieur à celui de l'overlay pour être au-dessus */
-  display: flex; /* Utilisez flex pour centrer les éléments à l'intérieur */
-  flex-direction: column; /* Organise les enfants en colonne */
-  justify-content: center; /* Centre verticalement les enfants */
-  align-items: center; /* Centre horizontalement les enfants */
-  text-align: center; /* Assurez-vous que le texte est centré */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); 
+  z-index: 1001; 
+  display: flex; 
+  flex-direction: column; 
+  justify-content: center; 
+  align-items: center;
+  text-align: center; 
 }
 
-/* Bouton OK */
 #OKButton {
-  background-color: #e74c3c; /* Couleur de fond */
-  color: white; /* Couleur du texte */
+  background-color: #e74c3c; 
+  color: white; 
   border: none;
   border-radius: 4px;
   padding: 10px 20px;
-  margin-top: 15px; /* Espace au-dessus du bouton */
+  margin-top: 15px; 
   cursor: pointer;
   outline: none;
 }
+
 #OKButton:hover {
-  background-color: #c0392b; /* Couleur de fond au survol */
+  background-color: #c0392b; 
 }
